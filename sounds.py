@@ -13,3 +13,7 @@ class SoundManager:
             self.current_track = random.choice(self.music_files)
             pygame.mixer.music.load(self.current_track)
             pygame.mixer.music.play()
+
+    @staticmethod
+    def stop():
+        pygame.mixer.music.stop()

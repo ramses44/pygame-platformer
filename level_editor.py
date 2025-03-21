@@ -22,6 +22,8 @@ class LevelEditor:
         screen = pygame.display.set_mode(WINDOW_SIZE)
         clock = pygame.time.Clock()
 
+        bg_image = sprites.load_image('background.png')
+
         running = True
         while running:
             for event in pygame.event.get():
@@ -98,6 +100,7 @@ class LevelEditor:
                         self.selected_object.set_pos(pygame.mouse.get_pos())
 
             screen.fill(BACKGROUND_COLOR)
+            screen.blit(bg_image, (0, 0))
 
             self.platforms.draw(screen)
             self.ladders.draw(screen)
@@ -118,7 +121,6 @@ class LevelEditor:
         assert len(self.start) and len(self.finish)
         
         map_data = {
-            'id': 1,
             'map': {
                 'start': self.start.sprites()[0].get_pos(),
                 'finish': self.finish.sprites()[0].get_pos(),

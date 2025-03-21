@@ -12,8 +12,8 @@ class Status:
 
 
 class Level:
-    def __init__(self, level_data):
-        self.id = level_data['id']
+    def __init__(self, level_id, level_data):
+        self.id = level_id
 
         self.platforms = pygame.sprite.Group([sprites.Platform.from_dict(d) for d in level_data['map']['platforms']])
         self.ladders = pygame.sprite.Group([sprites.Ladder.from_dict(d) for d in level_data['map']['ladders']])
@@ -41,10 +41,10 @@ class Level:
     def draw(self, screen):
         self.platforms.draw(screen)
         self.ladders.draw(screen)
-        self.mines.draw(screen)
         self.coins.draw(screen)
         self.start.draw(screen)
         self.finish.draw(screen)
+        self.mines.draw(screen)
 
         if self.status == Status.IN_PROGRESS:
             self.player.draw(screen)
